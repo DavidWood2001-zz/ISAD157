@@ -46,10 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Backend\Friend.cs" />
+    <Compile Include="Backend\Message.cs" />
+    <Compile Include="Backend\School.cs" />
+    <Compile Include="Backend\User.cs" />
+    <Compile Include="Backend\Workplace.cs" />
+    <Compile Include="Frontend\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Frontend\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
