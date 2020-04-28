@@ -15,15 +15,34 @@ namespace ISAD157_Coursework.Backend
         #endregion attributes
 
         #region constructors
+        public Message(int inRecieverID, DateTime inDateTime, string inMsg)
+        {
+            recieverID = inRecieverID;
+            dateTime = Convert.ToString(inDateTime);
+            msg = inMsg;
+        }
         #endregion constructors
 
         #region methods
 
         #region getters
+        public int getRecieverID()
+        {
+            return recieverID;
+        }
+
+        public string getDateTime()
+        {
+            return dateTime;
+        }
+
+        public string getMsg()
+        {
+            return msg;
+        }
         #endregion getters
 
-        #region setters
-        #endregion setters
+        //setters aren't needed for this method
 
         #endregion methods
     }
