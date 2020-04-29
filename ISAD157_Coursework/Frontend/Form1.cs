@@ -17,14 +17,18 @@ namespace ISAD157_Coursework
         User[] lstUsers = new User[0];
         Workplace[] lstCurWorkplaces = new Workplace[0];
         School[] lstCurSchools = new School[0];
+        int selectedUser;
+        //added colours for future to be able to add them to the design as borders
+        string usrColour = "#F5793A";
+        string sentMsgColour = "#A95AA1";
+        string recMsgColour = "#85C0F9";
+        string msgTextColour = "#0F2080";
         public Form1()
         {
             InitializeComponent();
             try
             {
                 createUsers();
-                MessageBox.Show("Database Connected");
-                retrieveWorkplaces(1);
             }
             catch (Exception err)
             {
@@ -56,6 +60,10 @@ namespace ISAD157_Coursework
                 lstUsers[curUser] = new User(userID, fName, lName, hometown, gender, relStatus, townOrCity, lstWorkplaces, lstSchools
                     , lstSentMessages, lstRecMessages, lstFriends);
                 curUser++;
+            }
+            for (int i = 0; i < lstUsers.Length; i++)
+            {
+                lstBoxUsers.Items.Add(lstUsers[i].getfName() + " " + lstUsers[i].getLName());
             }
         }
 
@@ -96,6 +104,18 @@ namespace ISAD157_Coursework
                 lstCurSchools[curSchool] = new School(userID, placename, startTime, endTime);
                 curSchool++;
             }
+        }
+
+        private void lstUser_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedUser = lstBoxUsers.SelectedIndex;
+            User userObject = lstUsers[selectedUser];
+            txtUserID.Text = Convert.ToString(userObject.getUserID());
+            txtUserName.Text = userObject.getfName() + " " + userObject.getLName();
+            txtHometown.Text = userObject.getHometown();
+            txtGender.Text = userObject.getGender();
+            txtRelStatus.Text = userObject.getRelStatus();
+            txtTownOrCity.Text = userObject.getTownOrCity();
         }
     }
 }

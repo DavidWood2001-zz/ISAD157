@@ -14,3 +14,4 @@ C:\Users\david\OneDrive - University of Plymouth\ISAD157\Coursework\ISAD157_Cour
 C:\Users\david\OneDrive - University of Plymouth\ISAD157\Coursework\ISAD157_Coursework\obj\Debug\ISAD157_Coursework.pdb
 C:\Users\david\OneDrive - University of Plymouth\ISAD157\Coursework\ISAD157_Coursework\bin\Debug\ISAD157_Library.dll
 C:\Users\david\OneDrive - University of Plymouth\ISAD157\Coursework\ISAD157_Coursework\bin\Debug\ISAD157_Library.pdb
+C:\Users\david\OneDrive - University of Plymouth\ISAD157\Coursework\ISAD157_Coursework\obj\Debug\ISAD157_Coursework.Form1.resources
