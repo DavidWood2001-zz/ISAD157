@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace ISAD157_Coursework.Backend
 {
@@ -25,6 +26,22 @@ namespace ISAD157_Coursework.Backend
         #endregion attributes
 
         #region constructors
+        public User(int inUserID, string inFName, string inLName, string inHometown, string inGender, string inRelStatus, string inTownOrCity,
+            Workplace[] inlstWorkplaces, School[] inlstSchools, Message[] inLstSentMessages, Message[] inLstRecMessages, Friend[] inLstFriends)
+        {
+            userID = setUserID(inUserID);
+            fName = setFName(inFName);
+            lName = setLName(inLName);
+            hometown = setHometown(inHometown);
+            gender = setGender(inGender);
+            relStatus = setRelStatus(inRelStatus);
+            townOrCity = setTownOrCity(inTownOrCity);
+            lstWorkplaces = setWorkplaces(inlstWorkplaces);
+            lstSchools = setSchools(inlstSchools);
+            lstSentMessages = setSentMessages(inLstSentMessages);
+            lstRecMessages = setRecMessages(inLstRecMessages);
+            lstFriends = setFriends(inLstFriends);
+        }
         #endregion constructors
 
         #region methods
@@ -83,12 +100,24 @@ namespace ISAD157_Coursework.Backend
         #region setters
         public int setUserID(int inUserID)
         {
+            userID = inUserID;
+            return userID;
+        }
+        public int setUserID(int inUserID, bool userEntered)
+        {
             //check if user exists
             //if user exists change the ID
             //Change the name (call setFName and setLName)
+            setFName();
+            setLName();
             //if they don't display an error message
             MessageBox.Show("Sorry but that user doesn't exist.");
             return 0;
+        }
+        public string setFName(string inFName)
+        {
+            fName = inFName;
+            return fName;
         }
         public string setFName()
         {
@@ -96,66 +125,61 @@ namespace ISAD157_Coursework.Backend
             //change name in form
             return "None";
         }
+        public string setLName(string inLName)
+        {
+            lName = inLName;
+            return lName;
+        }
         public string setLName()
         {
             //get name from db
             //change name in form
             return "None";
         }
-        public string setHometown()
+        public string setHometown(string inHomeTown)
         {
-            //get hometown from db
-            //change hometown in form
-            return "None";
+            hometown = inHomeTown;
+            return hometown;
         }
-        public string setGender()
+        public string setGender(string inGender)
         {
-            //get gender from db
-            //change gender in form
-            return "None";
+            gender = inGender;
+            return gender;
         }
-        public string setRelStatus()
+        public string setRelStatus(string inRelStatus)
         {
-            //get relStatus from db
-            //change relStatus in form
-            return "None";
+            relStatus = inRelStatus;
+            return relStatus;
         }
-        public string setTownOrCity()
+        public string setTownOrCity(string inTownOrCity)
         {
-            //get town/city from db
-            //change town/city in form
-            return "None";
+            townOrCity = inTownOrCity;
+            return townOrCity;
         }
-        public Workplace[] setWorkplaces()
+        public Workplace[] setWorkplaces(Workplace[] inWorkplaces)
         {
-            //get workplaces from db
-            //change workplaces in form
-            return null;
+            lstWorkplaces = inWorkplaces;
+            return lstWorkplaces;
         }
-        public School[] setSchools()
+        public School[] setSchools(School[] inSchools)
         {
-            //get schools from db
-            //change school in form
-            return null;
+            lstSchools = inSchools;
+            return lstSchools;
         }
-        public Message[] setSentMessages()
+        public Message[] setSentMessages(Message[] inMessages)
         {
-            //get messages sent from db
-            //change the messages sent in form
-            return null;
+            lstSentMessages = inMessages;
+            return lstSentMessages;
         }
-        public Message[] setRecMessages()
+        public Message[] setRecMessages(Message[] inMessages)
         {
-            //get messages recieved from db
-            //change the messages recieved in form
-            return null;
+            lstRecMessages = inMessages;
+            return lstRecMessages;
         }
-        public Friend[] setFriends()
+        public Friend[] setFriends(Friend[] inFriends)
         {
-            //get friend from db
-            //get friends names from db
-            //change friends in form
-            return null;
+            lstFriends = inFriends;
+            return lstFriends;
         }
         #endregion setters
 

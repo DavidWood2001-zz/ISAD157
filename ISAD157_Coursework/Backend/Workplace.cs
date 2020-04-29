@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace ISAD157_Coursework.Backend
 {
-    class Workplace
+    public class Workplace
     {
         #region attributes
+        int userID;
         string name;
         string strtTime;
         string endTime;
@@ -16,8 +17,9 @@ namespace ISAD157_Coursework.Backend
 
         #region constructors
         //Creates workplace object if user no longer works there (end time is present)
-        public Workplace(string inName, DateTime inStrtTime, DateTime inEndTime)
+        public Workplace(int inUserID, string inName, DateTime inStrtTime, DateTime inEndTime)
         {
+            userID = inUserID;
             name = setName(inName);
             strtTime = setStrtTime(inStrtTime);
             endTime = setEndTime(inEndTime);
@@ -34,6 +36,11 @@ namespace ISAD157_Coursework.Backend
         #region methods
 
         #region getters
+
+        public int getUserID()
+        {
+            return userID;
+        }
         public string getName()
         {
             return name;
@@ -52,6 +59,12 @@ namespace ISAD157_Coursework.Backend
         #region setters
         //Setters have been added for the future
         //The client may request the ability to edit workplaces so this has been added here
+
+        public int setUserID(int inUserID)
+        {
+            userID = inUserID;
+            return userID;
+        }
         public string setName(string inName)
         {
             name = Convert.ToString(inName);

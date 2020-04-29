@@ -1,0 +1,11 @@
+C:\Users\david\OneDrive - University of Plymouth\ISAD157\Coursework\ISAD157_Library\bin\Debug\netstandard2.0\ISAD157_Library.deps.json
+C:\Users\david\OneDrive - University of Plymouth\ISAD157\Coursework\ISAD157_Library\bin\Debug\netstandard2.0\ISAD157_Library.dll
+C:\Users\david\OneDrive - University of Plymouth\ISAD157\Coursework\ISAD157_Library\bin\Debug\netstandard2.0\ISAD157_Library.pdb
+C:\Users\david\OneDrive - University of Plymouth\ISAD157\Coursework\ISAD157_Library\bin\Debug\netstandard2.0\MySql.Data.DLL
+C:\Users\david\OneDrive - University of Plymouth\ISAD157\Coursework\ISAD157_Library\obj\Debug\netstandard2.0\ISAD157_Library.csprojAssemblyReference.cache
+C:\Users\david\OneDrive - University of Plymouth\ISAD157\Coursework\ISAD157_Library\obj\Debug\netstandard2.0\ISAD157_Library.csproj.CoreCompileInputs.cache
+C:\Users\david\OneDrive - University of Plymouth\ISAD157\Coursework\ISAD157_Library\obj\Debug\netstandard2.0\ISAD157_Library.AssemblyInfoInputs.cache
+C:\Users\david\OneDrive - University of Plymouth\ISAD157\Coursework\ISAD157_Library\obj\Debug\netstandard2.0\ISAD157_Library.AssemblyInfo.cs
+C:\Users\david\OneDrive - University of Plymouth\ISAD157\Coursework\ISAD157_Library\obj\Debug\netstandard2.0\ISAD157_Library.csproj.CopyComplete
+C:\Users\david\OneDrive - University of Plymouth\ISAD157\Coursework\ISAD157_Library\obj\Debug\netstandard2.0\ISAD157_Library.dll
+C:\Users\david\OneDrive - University of Plymouth\ISAD157\Coursework\ISAD157_Library\obj\Debug\netstandard2.0\ISAD157_Library.pdb

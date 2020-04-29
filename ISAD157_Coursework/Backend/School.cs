@@ -9,6 +9,7 @@ namespace ISAD157_Coursework.Backend
     class School
     {
         #region attributes
+        int userID;
         string name;
         string strtTime;
         string endTime;
@@ -16,16 +17,18 @@ namespace ISAD157_Coursework.Backend
 
         #region constructors
         //Creates a school object if user is no longer attending (end time is present)
-        public School(string inName, DateTime inStrtTime, DateTime inEndTime)
+        public School(int inUserID, string inName, DateTime inStrtTime, DateTime inEndTime)
         {
+            userID = setUserID(inUserID);
             name = setName(inName);
             strtTime = setStrtTime(inStrtTime);
             endTime = setEndTime(inEndTime);
         }
 
         //Creates a school object if user is currently attending (no end time)
-        public School(string inName, DateTime inStrtTime)
+        public School(int inUserID, string inName, DateTime inStrtTime)
         {
+            userID = setUserID(inUserID);
             name = setName(inName);
             strtTime = setStrtTime(inStrtTime);
             endTime = "Current";
@@ -35,6 +38,11 @@ namespace ISAD157_Coursework.Backend
         #region methods
 
         #region getters
+
+        public int getUserID()
+        {
+            return userID;
+        }
         public string getName()
         {
             return name;
@@ -52,6 +60,12 @@ namespace ISAD157_Coursework.Backend
         #endregion getters
 
         #region setters
+
+        public int setUserID(int inUserID)
+        {
+            userID = inUserID;
+            return userID;
+        }
         public string setName(string inName)
         {
             name = Convert.ToString(inName);
