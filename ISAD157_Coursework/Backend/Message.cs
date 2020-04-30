@@ -6,19 +6,21 @@ using System.Threading.Tasks;
 
 namespace ISAD157_Coursework.Backend
 {
-    class Message
+    public class Message
     {
         #region attributes
+        int senderID;
         int recieverID;
         string dateTime;
         string msg;
         #endregion attributes
 
         #region constructors
-        public Message(int inRecieverID, DateTime inDateTime, string inMsg)
+        public Message(int inSenderID, int inRecieverID, string inDateTime, string inMsg)
         {
+            senderID = inSenderID;
             recieverID = inRecieverID;
-            dateTime = Convert.ToString(inDateTime);
+            dateTime = inDateTime;
             msg = inMsg;
         }
         #endregion constructors
@@ -26,6 +28,10 @@ namespace ISAD157_Coursework.Backend
         #region methods
 
         #region getters
+        public int getSenderID()
+        {
+            return senderID;
+        }
         public int getRecieverID()
         {
             return recieverID;

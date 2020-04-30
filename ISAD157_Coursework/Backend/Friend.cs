@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace ISAD157_Coursework.Backend
 {
-    class Friend
+    public class Friend
     {
         #region attributes
         int userID;
@@ -16,9 +16,9 @@ namespace ISAD157_Coursework.Backend
         #endregion attributes
 
         #region constructors
-        public Friend(int inUserID, string inFName, string inLName)
+        public Friend(int inUserID)
         {
-
+            userID = setUserID(inUserID);
         }
         #endregion constructors
 
@@ -45,24 +45,36 @@ namespace ISAD157_Coursework.Backend
         public int setUserID(int inUserID)
         {
             //check if user exists
+            bool userExists = ISAD157_Library.SQL_Connection_Functions.userExists(inUserID);
             //if user exists change the ID
-            //Change the name (call setFName and setLName)
-            //if they don't display an error message
-            MessageBox.Show("Sorry but that user doesn't exist.");
-            return 0;
+            if (userExists)
+            {
+                userID = inUserID;
+                //Change the name (call setFName and setLName)
+                fName = setFName(inUserID);
+                lName = setLName(inUserID);
+            }
+            else
+            {
+                //if they don't display an error message
+                MessageBox.Show("Sorry but that user doesn't exist.");
+            }
+            return userID;
         }
 
-        public string setFName()
+        private string setFName(int inUserID)
         {
             //get name from db
             //change name in form
-            return "None";
+            fName = ISAD157_Library.SQL_Connection_Functions.returnFName(inUserID); ;
+            return fName;
         }
-        public string setLName()
+        private string setLName(int inUserID)
         {
             //get name from db
             //change name in form
-            return "None";
+            lName = ISAD157_Library.SQL_Connection_Functions.returnLName(inUserID);
+            return lName;
         }
         #endregion setters
 

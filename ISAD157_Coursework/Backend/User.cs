@@ -8,7 +8,7 @@ using MySql.Data.MySqlClient;
 
 namespace ISAD157_Coursework.Backend
 {
-    class User
+    public class User
     {
         #region attributes
         int userID;

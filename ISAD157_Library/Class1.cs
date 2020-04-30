@@ -5,7 +5,7 @@ using MySql.Data.MySqlClient;
 
 namespace ISAD157_Library
 {
-    public class ISAD157_functions
+    public class SQL_Connection_Functions
     {
         internal const string USER_NAME = "ISAD157_DWood";
         internal const string SERVER = "proj-mysql.uopnet.plymouth.ac.uk";
@@ -33,7 +33,49 @@ namespace ISAD157_Library
                 sqlDA = new MySqlDataAdapter(cmd);
             }
         }
+        public static void searchUsers(int inUserID)
+        {
+            using (MySqlConnection connection =
+            new MySqlConnection(connectionString))
+            {
 
+                string query = "SELECT * FROM isad157_dwood.users WHERE user_id = " + Convert.ToString(inUserID);
+
+                connection.Open();
+
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                sqlDA = new MySqlDataAdapter(cmd);
+            }
+        }
+        public static void searchUserFName(string inUserFName)
+        {
+            using (MySqlConnection connection =
+            new MySqlConnection(connectionString))
+            {
+
+                string query = "SELECT * FROM isad157_dwood.users WHERE f_name = '" + inUserFName + "'";
+
+                connection.Open();
+
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                sqlDA = new MySqlDataAdapter(cmd);
+            }
+        }
+
+        public static void searchUserLName(string inUserLName)
+        {
+            using (MySqlConnection connection =
+            new MySqlConnection(connectionString))
+            {
+
+                string query = "SELECT * FROM isad157_dwood.users WHERE l_name = '" + inUserLName + "'";
+
+                connection.Open();
+
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                sqlDA = new MySqlDataAdapter(cmd);
+            }
+        }
         public static void retrieveWorkplaces(int inUserID)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -58,6 +100,96 @@ namespace ISAD157_Library
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 sqlDA = new MySqlDataAdapter(cmd);
             }
+        }
+        public static void retrieveFriends(int inUserID)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                string query = "SELECT * FROM isad157_dwood.friends WHERE user_id = " + Convert.ToString(inUserID);
+
+                connection.Open();
+
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                sqlDA = new MySqlDataAdapter(cmd);
+            }
+        }
+        public static void retrieveSentMsgs(int inUserID)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                string query = "SELECT * FROM isad157_dwood.messages WHERE sender_id = " + Convert.ToString(inUserID);
+
+                connection.Open();
+
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                sqlDA = new MySqlDataAdapter(cmd);
+            }
+        }
+        public static void retrieveRecMsgs(int inUserID)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                string query = "SELECT * FROM isad157_dwood.messages WHERE sender_id = " + Convert.ToString(inUserID);
+
+                connection.Open();
+
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                sqlDA = new MySqlDataAdapter(cmd);
+            }
+        }
+        public static bool userExists(int inUserID)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                string query = "SELECT * FROM isad157_dwood.users WHERE user_id = " + Convert.ToString(inUserID);
+
+                connection.Open();
+
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                sqlDA = new MySqlDataAdapter(cmd);
+            }
+            DataTable dt = new DataTable();
+            sqlDA.Fill(dt);
+            if (dt != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public static string returnFName(int inUserID)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                string query = "SELECT f_name FROM isad157_dwood.users WHERE user_id = " + Convert.ToString(inUserID);
+
+                connection.Open();
+
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                sqlDA = new MySqlDataAdapter(cmd);
+            }
+            DataTable dt = new DataTable();
+            sqlDA.Fill(dt);
+
+            return Convert.ToString(dt.Rows[0]["f_name"]);
+        }
+        public static string returnLName(int inUserID)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                string query = "SELECT l_name FROM isad157_dwood.users WHERE user_id = " + Convert.ToString(inUserID);
+
+                connection.Open();
+
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                sqlDA = new MySqlDataAdapter(cmd);
+            }
+            DataTable dt = new DataTable();
+            sqlDA.Fill(dt);
+            
+            return Convert.ToString(dt.Rows[0]["l_name"]);
         }
     }
 }

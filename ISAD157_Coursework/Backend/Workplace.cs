@@ -17,7 +17,7 @@ namespace ISAD157_Coursework.Backend
 
         #region constructors
         //Creates workplace object if user no longer works there (end time is present)
-        public Workplace(int inUserID, string inName, DateTime inStrtTime, DateTime inEndTime)
+        public Workplace(int inUserID, string inName, string inStrtTime, string inEndTime)
         {
             userID = inUserID;
             name = setName(inName);
@@ -25,7 +25,7 @@ namespace ISAD157_Coursework.Backend
             endTime = setEndTime(inEndTime);
         }
         //Creates workplace object if user is still an employee (no end time)
-        public Workplace(string inName, DateTime inStrtTime)
+        public Workplace(string inName, string inStrtTime)
         {
             name = setName(inName);
             strtTime = setStrtTime(inStrtTime);
@@ -71,15 +71,15 @@ namespace ISAD157_Coursework.Backend
             return name;
         }
 
-        public string setStrtTime(DateTime inStrtTime)
+        public string setStrtTime(string inStrtTime)
         {
-            strtTime = Convert.ToString(inStrtTime);
+            strtTime = inStrtTime;
             return strtTime;
         }
 
-        public string setEndTime(DateTime inEndTime)
+        public string setEndTime(string inEndTime)
         {
-            endTime = Convert.ToString(inEndTime);
+            endTime = inEndTime;
             return endTime;
         }
         #endregion setters

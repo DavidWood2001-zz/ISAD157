@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ISAD157_Coursework.Backend
 {
-    class School
+    public class School
     {
         #region attributes
         int userID;

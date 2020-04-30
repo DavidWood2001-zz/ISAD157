@@ -81,13 +81,14 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Search";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtSearchUser
             // 
             this.txtSearchUser.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtSearchUser.BackColor = System.Drawing.SystemColors.Control;
             this.txtSearchUser.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchUser.ForeColor = System.Drawing.SystemColors.Control;
+            this.txtSearchUser.ForeColor = System.Drawing.Color.Black;
             this.txtSearchUser.Location = new System.Drawing.Point(29, 207);
             this.txtSearchUser.Margin = new System.Windows.Forms.Padding(5, 20, 5, 5);
             this.txtSearchUser.Name = "txtSearchUser";
@@ -257,6 +258,7 @@
             this.lstBoxTo.Name = "lstBoxTo";
             this.lstBoxTo.Size = new System.Drawing.Size(198, 312);
             this.lstBoxTo.TabIndex = 19;
+            this.lstBoxTo.SelectedIndexChanged += new System.EventHandler(this.lstBoxTo_SelectedIndexChanged);
             // 
             // lstBoxFrom
             // 
@@ -266,6 +268,7 @@
             this.lstBoxFrom.Name = "lstBoxFrom";
             this.lstBoxFrom.Size = new System.Drawing.Size(198, 312);
             this.lstBoxFrom.TabIndex = 20;
+            this.lstBoxFrom.SelectedIndexChanged += new System.EventHandler(this.lstBoxFrom_SelectedIndexChanged);
             // 
             // label1
             // 
