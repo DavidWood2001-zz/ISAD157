@@ -31,7 +31,7 @@ The issue with this diagram is that a user may have many workplaces and many uni
 #### Final Relationship Diagram
 To correct the issue of multiple data in one field I have separated the data into tables as shown below.
 
-![Final Entity Relationship Diagram](Images/FinalEntityImg.jpg)
+![Final Entity Relationship Diagram](Images/FinalEntityImg.png)
 
 This resolves the issue of having multiple data in one field and abstracts that to separate tables with the userID being used as the Primary Key as Foreign Key. This will help to find the data in the prototype implementation a lot easier than having to loop through and segment data in one field. You will notice that the one-to-any relationships between the entities have been maintained such that the new tables don’t impact the other entities of the databases.
 ### Class Diagrams
