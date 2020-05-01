@@ -5,16 +5,16 @@ If you want to understand the final implementation and don’t want to read thro
 
 ## List of High Level Functions
 This is a list of all the functions that the final implementation of the system needs to have.
-•	Search User
-•	View User Information
-•	View Users Friends
-•	View Users Messages
-•	Add User
-•	Edit User
-•	Delete User
-•	Add Friend
-•	Delete Friend
-# Implementation
+- Search User
+- View User Information
+- View Users Friends
+- View Users Messages
+- Add User
+- Edit User
+- Delete User
+- Add Friend
+- Delete Friend
+- Implementation
 ## Entity Diagram of Database
 This is the entity diagram representation of the database that the system is using to power the data behind the system.
 
@@ -22,10 +22,11 @@ This is the entity diagram representation of the database that the system is usi
 
 ## Included Functions
 This is a list of the functions that the prototype is going to implement, these are taken from the high level functions list in this document.
-•	Search User
-•	View User Information
-•	View Users Friends
-•	View Users Messages
+- Search User
+- View User Information
+- View Users Friends
+- View Users Messages
+
 This means I won’t be implementing the ability to edit, add or delete a user, add a friend or delete a friend. This is because these were extra capabilities that aren’t essential to demonstrate the systems potential.
 ## Interface Design
 This is a diagram of the intended final design
