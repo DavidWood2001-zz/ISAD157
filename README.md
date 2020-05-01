@@ -31,7 +31,11 @@ This means I won’t be implementing the ability to edit, add or delete a user, 
 ## Interface Design
 This is a diagram of the intended final design
 
-This is a diagram of the final design
+![Final Interface Design Diagram](Images/FinalInterfaceDesign.png)
+
+This is a screenshot of the implemented design
+
+![Implementation of the interface](Images/InterfaceImplementation.png)
 ## Program Structure
 The general structure will be a frontend that uses the different methods that each class has as well as a general custom library that handles the functions that is used by a lot of different methods such as searching the database and retrieving database records.
 # Appendix
