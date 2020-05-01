@@ -31,8 +31,6 @@ The issue with this diagram is that a user may have many workplaces and many uni
 #### Final Relationship Diagram
 To correct the issue of multiple data in one field I have separated the data into tables as shown below.
 
-![Final Entity Relationship Diagram](Images/FinalEntityImg.png)
-
 This resolves the issue of having multiple data in one field and abstracts that to separate tables with the userID being used as the Primary Key as Foreign Key. This will help to find the data in the prototype implementation a lot easier than having to loop through and segment data in one field. You will notice that the one-to-any relationships between the entities have been maintained such that the new tables don’t impact the other entities of the databases.
 ### Class Diagrams
 Above is an image displaying the class diagrams with the arrows dictating that the main class “User” is using the other classes as datatypes for certain attributes of “User” class. For example, the lstWorkplace attribute of User class is an array of object “workplace”. The arrow dictation along with the prefixes on the attribute names will allow me to build the class pseudocode more accurately than I would be able to if neither was included.
