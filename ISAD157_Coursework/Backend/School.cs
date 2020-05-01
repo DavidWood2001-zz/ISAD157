@@ -17,7 +17,7 @@ namespace ISAD157_Coursework.Backend
 
         #region constructors
         //Creates a school object if user is no longer attending (end time is present)
-        public School(int inUserID, string inName, DateTime inStrtTime, DateTime inEndTime)
+        public School(int inUserID, string inName, string inStrtTime, string inEndTime)
         {
             userID = setUserID(inUserID);
             name = setName(inName);
@@ -26,7 +26,7 @@ namespace ISAD157_Coursework.Backend
         }
 
         //Creates a school object if user is currently attending (no end time)
-        public School(int inUserID, string inName, DateTime inStrtTime)
+        public School(int inUserID, string inName, string inStrtTime)
         {
             userID = setUserID(inUserID);
             name = setName(inName);
@@ -72,13 +72,13 @@ namespace ISAD157_Coursework.Backend
             return name;
         }
 
-        public string setStrtTime(DateTime inStrtTime)
+        public string setStrtTime(string inStrtTime)
         {
             strtTime = Convert.ToString(inStrtTime);
             return strtTime;
         }
 
-        public string setEndTime(DateTime inEndTime)
+        public string setEndTime(string inEndTime)
         {
             endTime = Convert.ToString(inEndTime);
             return endTime;

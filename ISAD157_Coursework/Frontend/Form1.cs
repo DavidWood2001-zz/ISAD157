@@ -108,8 +108,8 @@ namespace ISAD157_Coursework
                 Array.Resize(ref lstCurSchools, lstCurSchools.Length + 1);
                 int userID = row.Field<int>(0);
                 string placename = row.Field<string>(1);
-                DateTime startTime = row.Field<DateTime>(2);
-                DateTime endTime = row.Field<DateTime>(3);
+                string startTime = row.Field<string>(2);
+                string endTime = row.Field<string>(3);
                 lstCurSchools[curSchool] = new School(userID, placename, startTime, endTime);
                 curSchool++;
             }
