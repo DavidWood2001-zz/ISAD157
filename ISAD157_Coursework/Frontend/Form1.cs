@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ISAD157_Coursework.Backend;
 using ISAD157_Library;
@@ -121,7 +115,7 @@ namespace ISAD157_Coursework
         public void retrieveFriends(int inUserID)
         {
             //If users friends not added create the list
-            if (lstUsers[inUserID].getFriends() == null) {
+            if (lstUsers[inUserID-1].getFriends() == null) {
                 Array.Resize(ref lstCurFriends, 0);
                 //replace 1 with the variable for the currently selected user
                 SQL_Connection_Functions.retrieveFriends(inUserID);
@@ -135,12 +129,12 @@ namespace ISAD157_Coursework
                     lstCurFriends[curFriend] = new Friend(friendID);
                     curFriend++;
                 }
-                lstUsers[inUserID].setFriends(lstCurFriends);
+                lstUsers[inUserID-1].setFriends(lstCurFriends);
             }
             //Otherwise retrieve the list
             else
             {
-                lstCurFriends = lstUsers[inUserID].getFriends();
+                lstCurFriends = lstUsers[inUserID-1].getFriends();
             }
             //Show the list
             for (int i = 0; i < lstCurFriends.Length; i++)
@@ -152,7 +146,7 @@ namespace ISAD157_Coursework
         }
         public void retrieveSentMessages(int inUserID)
         {
-            if (lstUsers[inUserID].getSentMessages() == null)
+            if (lstUsers[inUserID-1].getSentMessages() == null)
             {
                 Array.Resize(ref lstCurSentMsgs, 0);
                 //replace 1 with the variable for the currently selected user
@@ -170,11 +164,11 @@ namespace ISAD157_Coursework
                     lstCurSentMsgs[curSentMsg] = new Backend.Message(senderID, recID, dateTime, msg);
                     curSentMsg++;
                 }
-                lstUsers[inUserID].setSentMessages(lstCurSentMsgs);
+                lstUsers[inUserID-1].setSentMessages(lstCurSentMsgs);
             }
             else
             {
-                lstCurSentMsgs = lstUsers[inUserID].getSentMessages();
+                lstCurSentMsgs = lstUsers[inUserID-1].getSentMessages();
             }
             for (int i = 0; i < lstCurSentMsgs.Length; i++)
             {
@@ -186,7 +180,7 @@ namespace ISAD157_Coursework
         }
         public void retrieveRecMessages(int inUserID)
         {
-            if (lstUsers[inUserID].getRecMessages() == null)
+            if (lstUsers[inUserID-1].getRecMessages() == null)
             {
                 Array.Resize(ref lstCurRecMsgs, 0);
                 //replace 1 with the variable for the currently selected user
@@ -204,17 +198,17 @@ namespace ISAD157_Coursework
                     lstCurRecMsgs[curRecMsg] = new Backend.Message(senderID, recID, dateTime, msg);
                     curRecMsg++;
                 }
-                lstUsers[inUserID].setRecMessages(lstCurRecMsgs);
+                lstUsers[inUserID-1].setRecMessages(lstCurRecMsgs);
             }
             else
             {
-                lstCurRecMsgs = lstUsers[inUserID].getRecMessages();
+                lstCurRecMsgs = lstUsers[inUserID-1].getRecMessages();
             }
             for (int i = 0; i < lstCurRecMsgs.Length; i++)
             {
                 int senderID = lstCurRecMsgs[i].getSenderID();
-                string recFName = lstUsers[senderID - 1].getfName();
-                string recLName = lstUsers[senderID - 1].getLName();
+                string recFName = SQL_Connection_Functions.returnFName(senderID);
+                string recLName = SQL_Connection_Functions.returnLName(senderID);
                 lstBoxFrom.Items.Add(recFName + " " + recLName);
             }
         }
@@ -223,6 +217,8 @@ namespace ISAD157_Coursework
         #region userInteractions
         private void lstUser_SelectedIndexChanged(object sender, EventArgs e)
         {
+            selectedUser = lstBoxUsers.SelectedIndex+1;
+            clearAll();
             showUserInfo();
             showUserWorkplaces();
             showUserSchools();
@@ -240,6 +236,7 @@ namespace ISAD157_Coursework
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            clearAll();
             searchUser(txtSearchUser.Text);
         }
         #endregion userInteractions
@@ -248,8 +245,7 @@ namespace ISAD157_Coursework
 
         private void showUserInfo()
         {
-            selectedUser = lstBoxUsers.SelectedIndex;
-            User userObject = lstUsers[selectedUser];
+            User userObject = lstUsers[selectedUser-1];
             txtUserID.Text = Convert.ToString(userObject.getUserID());
             txtUserName.Text = userObject.getfName() + " " + userObject.getLName();
             txtHometown.Text = userObject.getHometown();
@@ -259,27 +255,22 @@ namespace ISAD157_Coursework
         }
         private void showUserWorkplaces()
         {
-            lstBoxWorkplaces.Items.Clear();
-            retrieveWorkplaces(selectedUser);
+            retrieveWorkplaces(lstUsers[selectedUser-1].getUserID());
         }
         private void showUserSchools()
         {
-            lstBoxSchools.Items.Clear();
-            retrieveSchools(selectedUser);
+            retrieveSchools(lstUsers[selectedUser - 1].getUserID());
         }
         private void showUserFriends()
         {
-            lstBoxFriends.Items.Clear();
             retrieveFriends(selectedUser);
         }
         private void showSentMsgs()
         {
-            lstBoxTo.Items.Clear();
             retrieveSentMessages(selectedUser);
         }
         private void showRecMsgs()
         {
-            lstBoxFrom.Items.Clear();
             retrieveRecMessages(selectedUser);
         }
         private void showMsgContent(Backend.Message inMsg)
@@ -323,6 +314,29 @@ namespace ISAD157_Coursework
             }
         }
         #endregion searchUser
+
+        #region clearAll
+        public void clearAll() {
+            txtGender.Text = "";
+            txtHometown.Text = "";
+            txtMsgText.Text = "";
+            txtRelStatus.Text = "";
+            txtTownOrCity.Text = "";
+            txtUserID.Text = "";
+            txtUserName.Text = "";
+            lstBoxFriends.Items.Clear();
+            lstBoxFrom.Items.Clear();
+            lstBoxSchools.Items.Clear();
+            lstBoxTo.Items.Clear();
+            lstBoxWorkplaces.Items.Clear();
+            Array.Resize(ref lstCurFriends, 0);
+            Array.Resize(ref lstCurRecMsgs, 0);
+            Array.Resize(ref lstCurSentMsgs, 0);
+            Array.Resize(ref lstCurWorkplaces, 0);
+            Array.Resize(ref lstCurSchools, 0);
+        }
+            
+        #endregion clearAll
 
     }
 }

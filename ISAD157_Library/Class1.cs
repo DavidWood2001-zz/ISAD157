@@ -88,7 +88,6 @@ namespace ISAD157_Library
                 sqlDA = new MySqlDataAdapter(cmd);
             }
         }
-
         public static void retrieveSchools(int inUserID)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -129,7 +128,7 @@ namespace ISAD157_Library
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                string query = "SELECT * FROM isad157_dwood.messages WHERE sender_id = " + Convert.ToString(inUserID);
+                string query = "SELECT * FROM isad157_dwood.messages WHERE receiver_id = " + Convert.ToString(inUserID);
 
                 connection.Open();
 
